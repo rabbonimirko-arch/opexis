@@ -8,13 +8,11 @@
   <style>
     :root{
       --opexis-blue:#004aad;
-      --card-bg:rgba(2,8,23,.70);
       --line:rgba(148,163,184,.25);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
 
-    /* === SFONDO PAGINA (PNG 9:16) === */
     body{
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       min-height:100vh;
@@ -22,15 +20,9 @@
       justify-content:center;
       align-items:center;
       padding:12px;
-
-      background-image:url("13.png");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
+      background:url("13.png") center/cover no-repeat fixed;
     }
 
-    /* overlay per leggibilità */
     body::before{
       content:"";
       position:fixed;
@@ -53,28 +45,14 @@
       overflow:hidden;
       z-index:1;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .phone-frame::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(0,74,173,.25), transparent 60%),
-        radial-gradient(circle at 90% 100%, rgba(0,74,173,.18), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
     }
 
     .content{
-      position:relative;
-      z-index:1;
       display:flex;
       flex-direction:column;
       height:100%;
       gap:14px;
-      justify-content:flex-start;
+      color:#fff;
     }
 
     header{
@@ -88,40 +66,26 @@
       border:2px solid #fff;
       background:var(--opexis-blue);
       display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:800;font-size:18px;
+      font-weight:800;font-size:18px;
       box-shadow:0 0 14px rgba(0,74,173,.55);
-      flex-shrink:0;
     }
 
-    .logo-text{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
     .logo-text span:first-child{
       font-size:15px;
       letter-spacing:.08em;
       text-transform:uppercase;
-      color:#fff;
       font-weight:650;
     }
+
     .logo-text span:last-child{
       font-size:11px;
       color:#c2d4ff;
     }
 
-    .hero{
-      display:flex;
-      flex-direction:column;
-      text-align:center;
-      gap:10px;
-      color:#fff;
-      padding:4px 4px 0;
-    }
+    .hero{text-align:center}
 
     .tag{
       display:inline-flex;
-      align-items:center;
       gap:6px;
       padding:4px 10px;
       border-radius:999px;
@@ -130,132 +94,89 @@
       font-size:10px;
       text-transform:uppercase;
       letter-spacing:.12em;
-      margin:0 auto 4px;
-      color:#e5edff;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .tag-dot{
-      width:7px;height:7px;border-radius:50%;
-      background:#22c55e;
-      box-shadow:0 0 10px rgba(34,197,94,.8);
+      margin:0 auto 6px;
     }
 
-    h1{
-      font-size:26px;
-      line-height:1.15;
-      margin-bottom:2px;
-    }
-    h1 span{color:var(--opexis-blue);}
+    h1{font-size:26px;line-height:1.15}
+    h1 span{color:var(--opexis-blue)}
 
-    /* === VIDEO BOX (sotto il titolo) === */
+    /* VIDEO */
     .video-box{
       margin:10px auto 6px;
-      width:100%;
       max-width:320px;
       background:rgba(0,0,0,.35);
       border-radius:16px;
       padding:8px;
-      box-shadow:0 12px 30px rgba(0,0,0,.4);
       border:1px solid rgba(148,163,184,.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
+
     .video-box video{
       width:100%;
       border-radius:12px;
-      display:block;
-      outline:none;
       background:#000;
     }
+
     .video-stop{
       margin-top:8px;
       width:100%;
       border:none;
       border-radius:999px;
-      padding:9px 12px;
+      padding:9px;
       font-size:12px;
       font-weight:700;
       cursor:pointer;
-      background:linear-gradient(135deg, #1e293b, #020617);
+      background:linear-gradient(135deg,#1e293b,#020617);
       color:#fff;
-      box-shadow:0 8px 18px rgba(0,0,0,.45);
-      letter-spacing:.02em;
-    }
-    .video-stop:active{
-      transform:translateY(1px);
-      box-shadow:0 6px 14px rgba(0,0,0,.45);
     }
 
     .subtitle{
       font-size:13px;
-      line-height:1.4;
       color:#d1e3ff;
       max-width:290px;
-      margin:0 auto;
+      margin:6px auto;
     }
 
     .highlights{
+      font-size:11px;
+      color:#e2e8f0;
       display:flex;
       flex-direction:column;
       gap:4px;
-      margin-top:10px;
-      font-size:11px;
-      color:#e2e8f0;
-    }
-    .highlights span{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      justify-content:center;
-    }
-    .bullet-dot{
-      width:6px;height:6px;border-radius:50%;
-      background:rgba(148,163,184,.9);
     }
 
-    /* === CTA (alzata) === */
-    .cta-wrapper{
-      margin-top:-6px; /* alza il blocco blu */
-      padding-bottom:2px;
-    }
+    .cta-wrapper{margin-top:-6px}
 
     .cta-button{
       display:block;
       width:100%;
       border:none;
       border-radius:999px;
-      padding:14px 16px;
+      padding:14px;
       text-align:center;
       font-size:14px;
       font-weight:700;
-      text-decoration:none;
-      background:linear-gradient(135deg, var(--opexis-blue), #001a4f);
+      background:linear-gradient(135deg,var(--opexis-blue),#001a4f);
       color:#fff;
+      text-decoration:none;
       box-shadow:0 18px 30px rgba(0,74,173,.55);
-      letter-spacing:.03em;
-    }
-    .cta-button:active{
-      transform:translateY(1px);
-      box-shadow:0 12px 20px rgba(0,74,173,.45);
     }
 
     .cta-caption{
-      margin-top:6px;
       font-size:10px;
       color:#94a3b8;
       text-align:center;
+      margin-top:6px;
     }
 
-    /* === SOCIALS === */
+    /* SOCIAL + CTA SITE */
     .socials{
       margin-top:8px;
       display:flex;
       gap:10px;
       justify-content:center;
-      align-items:center;
       flex-wrap:wrap;
     }
+
     .social-link{
       display:inline-flex;
       align-items:center;
@@ -268,34 +189,24 @@
       text-decoration:none;
       font-size:11px;
       font-weight:650;
-      letter-spacing:.02em;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
       box-shadow:0 10px 20px rgba(0,0,0,.25);
     }
-    .social-link:active{transform:translateY(1px)}
-    .social-dot{
-      width:10px;height:10px;border-radius:50%;
-      background:rgba(226,232,240,.9);
-      box-shadow:0 0 10px rgba(226,232,240,.35);
-      flex-shrink:0;
+
+    .cta-site{
+      background:linear-gradient(135deg,#004aad,#001a4f);
+      border-color:rgba(0,74,173,.6);
+      box-shadow:0 12px 26px rgba(0,74,173,.45);
     }
 
     footer{
       margin-top:auto;
-      padding-top:6px;
-      text-align:center;
       font-size:9px;
       color:#94a3b8;
+      text-align:center;
     }
 
-    @media (max-width:480px){
-      .phone-frame{
-        border-radius:0;
-        max-width:100%;
-        aspect-ratio:auto;
-        height:100vh;
-      }
+    @media(max-width:480px){
+      .phone-frame{border-radius:0;height:100vh}
       body{padding:0}
     }
   </style>
@@ -313,92 +224,53 @@
       </header>
 
       <section class="hero">
-        <div class="tag">
-          <span class="tag-dot"></span>
-          <span>Twynet – Social • AI • Blockchain</span>
-        </div>
+        <div class="tag">Twynet – Social • AI • Blockchain</div>
 
-        <h1>
-          Il social professionale <span>guidato dall’AI</span>
-        </h1>
+        <h1>Il social professionale <span>guidato dall’AI</span></h1>
 
-        <!-- VIDEO INTRO (stesso posto di prima: subito sotto il titolo) -->
         <div class="video-box">
-          <video
-            id="introVideo"
-            src="video_intro.mp4"
-            autoplay
-            muted
-            playsinline
-            preload="auto"
-          ></video>
-
-          <button class="video-stop" type="button" onclick="stopVideo()">
-            ⏹ Stop video
-          </button>
+          <video id="introVideo" src="video_intro.mp4" autoplay muted playsinline></video>
+          <button class="video-stop" onclick="stopVideo()">⏹ Stop video</button>
         </div>
 
         <p class="subtitle">
-          Scopri come Twynet unisce social network, marketplace, formazione e
-          marketing relazionale in un’unica piattaforma.
+          Scopri come Twynet unisce social network, marketplace, formazione e marketing relazionale.
         </p>
 
         <div class="highlights">
-          <span><span class="bullet-dot"></span> AI per contenuti, networking e analisi</span>
-          <span><span class="bullet-dot"></span> Marketplace, e-learning e referral integrati</span>
-          <span><span class="bullet-dot"></span> Opportunità per professionisti, aziende e investitori</span>
+          <span>• AI per contenuti e networking</span>
+          <span>• Marketplace ed e-learning</span>
+          <span>• Opportunità per aziende e investitori</span>
         </div>
       </section>
 
       <section class="cta-wrapper">
-        <a href="ai.html" class="cta-button">
-          Parla con la nostra AI per ulteriori informazioni
-        </a>
-        <p class="cta-caption">
-          L’assistente virtuale Opexis risponde alle tue domande su Twynet, servizi e opportunità.
-        </p>
+        <a href="ai.html" class="cta-button">Parla con la nostra AI</a>
+        <p class="cta-caption">L’assistente virtuale Opexis è pronta ad aiutarti</p>
 
-        <div class="socials" aria-label="Social Opexis">
-          <a class="social-link" href="https://www.instagram.com/opexis.digital/" target="_blank" rel="noopener">
-            <span class="social-dot"></span> Instagram
-          </a>
-          <a class="social-link" href="https://www.facebook.com/profile.php?id=61580851595121" target="_blank" rel="noopener">
-            <span class="social-dot"></span> Facebook
-          </a>
-          <a class="social-link" href="https://www.linkedin.com/company/opexis/" target="_blank" rel="noopener">
-            <span class="social-dot"></span> LinkedIn
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/opexis.digital/" target="_blank">Instagram</a>
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61580851595121" target="_blank">Facebook</a>
+          <a class="social-link" href="https://www.linkedin.com/company/opexis/" target="_blank">LinkedIn</a>
+
+          <!-- CTA SITO -->
+          <a class="social-link cta-site" href="https://opexis.digital" target="_blank">
+            Acquista i nostri servizi ora
           </a>
         </div>
       </section>
 
       <footer>
-        © <span id="year"></span> OpexisDigital s.r.l. – https://opexis.digital
+        © <span id="year"></span> OpexisDigital s.r.l.
       </footer>
     </div>
   </div>
 
   <script>
-    // Anno automatico nel footer
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Autoplay (alcuni browser ritardano: tento play al load)
-    window.addEventListener("load", () => {
-      const v = document.getElementById("introVideo");
-      if (!v) return;
-      const p = v.play();
-      if (p && typeof p.catch === "function") {
-        p.catch(() => {
-          // Se il browser blocca l'autoplay, il video resta comunque pronto.
-        });
-      }
-    });
-
-    // STOP: ferma e riporta a inizio
-    function stopVideo() {
-      const video = document.getElementById("introVideo");
-      if (!video) return;
-      video.pause();
-      video.currentTime = 0;
+    function stopVideo(){
+      const v=document.getElementById("introVideo");
+      v.pause(); v.currentTime=0;
     }
   </script>
 </body>
